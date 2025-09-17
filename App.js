@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 
 const drumPads = [
-  { key: "Q", id: "Heater 1", url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" },
-  { key: "W", id: "Heater 2", url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3" },
-  { key: "E", id: "Heater 3", url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3" },
-  { key: "A", id: "Heater 4", url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3" },
+  { key: "Q", id: "Heater-1", url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" },
+  { key: "W", id: "Heater-2", url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3" },
+  { key: "E", id: "Heater-3", url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3" },
+  { key: "A", id: "Heater-4", url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3" },
   { key: "S", id: "Clap", url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3" },
   { key: "D", id: "Open-HH", url: "https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3" },
   { key: "Z", id: "Kick-n'-Hat", url: "https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3" },
@@ -19,10 +19,8 @@ const App = () => {
   const playSound = (key) => {
     const audio = document.getElementById(key);
     if (audio) {
-      audio.currentTime = 0; // restart sound from beginning
-      audio.play().catch((error) => {
-        console.log("Playback prevented:", error);
-      });
+      audio.currentTime = 0;
+      audio.play().catch(err => console.log("Playback prevented:", err));
       const pad = drumPads.find((pad) => pad.key === key);
       if (pad) setDisplay(pad.id);
     }
@@ -44,7 +42,7 @@ const App = () => {
     <div id="drum-machine">
       <div className="pads">
         {drumPads.map((pad) => (
-          <div
+          <button
             key={pad.key}
             className="drum-pad"
             id={pad.id}
@@ -52,7 +50,7 @@ const App = () => {
           >
             {pad.key}
             <audio className="clip" id={pad.key} src={pad.url}></audio>
-          </div>
+          </button>
         ))}
       </div>
       <div id="display">{display}</div>
