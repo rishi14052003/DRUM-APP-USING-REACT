@@ -21,8 +21,11 @@ const App = () => {
     if (audio) {
       audio.currentTime = 0;
       audio.play().catch(err => console.log("Playback prevented:", err));
-      const pad = drumPads.find((pad) => pad.key === key);
-      if (pad) setDisplay(pad.id);
+      // update display with parent button id (sound name)
+      const parentButton = audio.parentElement;
+      if (parentButton) {
+        setDisplay(parentButton.id);
+      }
     }
   };
 
@@ -42,7 +45,7 @@ const App = () => {
     <div id="drum-machine">
       <div className="pads">
         {drumPads.map((pad) => (
-          <button
+          <div
             key={pad.key}
             className="drum-pad"
             id={pad.id}
@@ -50,7 +53,7 @@ const App = () => {
           >
             {pad.key}
             <audio className="clip" id={pad.key} src={pad.url}></audio>
-          </button>
+          </div>
         ))}
       </div>
       <div id="display">{display}</div>
