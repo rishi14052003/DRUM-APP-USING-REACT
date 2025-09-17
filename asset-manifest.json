@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/DRUM-APP-USING-REACT/static/css/main.10ea5b63.css",
+    "main.js": "/DRUM-APP-USING-REACT/static/js/main.df73bd30.js",
+    "index.html": "/DRUM-APP-USING-REACT/index.html",
+    "main.10ea5b63.css.map": "/DRUM-APP-USING-REACT/static/css/main.10ea5b63.css.map",
+    "main.df73bd30.js.map": "/DRUM-APP-USING-REACT/static/js/main.df73bd30.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.10ea5b63.css",
+    "static/js/main.df73bd30.js"
+  ]
+}
